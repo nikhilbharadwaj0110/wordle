@@ -6,6 +6,16 @@ import random
 from colorama import Fore, Back
 colorama.init(autoreset=True)
 userInputList=[]
+f = open("valid_words.txt")
+validWords = f.readlines()
+validWords = [x.strip() for x in validWords]
+f.close()
+
+def isValidWord(word):
+    if word in validWords:
+        return True
+    else:
+        return False
 
 #Making a list of words to pick for the word of the day
 wordsList=['better','brings','beyond','bishop','import','tables','prices','taught','random','export','yellow','letter','string','making','prints','aboard','soccer','stream','phones','cookie','scores','reason']
@@ -46,31 +56,30 @@ print("    "+Fore.WHITE + Back.GREEN + " W " + Back.YELLOW + "O " + Back.GREEN +
 for i in range(6):
   #Getting users guess as input
   userGuess = input("\n").lower()
-  
-  #userInputList.append(userGuess)
-  #Checking if it is the correct amount of letters   
-  if len(userGuess) !=6:
-    print(Fore.RED + "You need to enter a 6 letter word.")
-    userGuess = input("\n")
-  
-  #Checking if the User's guess is correct    
-  if userGuess == wordOfTheDay:
-    os.system('cls')
-    print("    " + Back.GREEN + " W " + Back.YELLOW + "O " + Back.GREEN + "R " + Back.YELLOW + "D " + Back.GREEN + "L " + Back.YELLOW + "E " + Back.BLACK + "6\n")
-    for s in userInputList:
-      print(s)    
-    print(Back.GREEN + str(userGuess))
+  if isValidWord(userGuess):
+    #userInputList.append(userGuess)
+    #Checking if it is the correct amount of letters   
+    if len(userGuess) !=6:
+      print(Fore.RED + "You need to enter a 6 letter word.")
+      userGuess = input("\n")
 
-    break
-  else:
-    #Runing all the fuctions and displaying the check version of the user's guess
-    findLetter(userGuess, wordOfTheDay)
-    os.system('cls')
-    print("    " + Back.GREEN + " W " + Back.YELLOW + "O " + Back.GREEN + "R " + Back.YELLOW + "D " + Back.GREEN + "L " + Back.YELLOW + "E " + Back.BLACK + "6\n")
-    for s in userInputList:
-      print(s)
+    #Checking if the User's guess is correct    
+    if userGuess == wordOfTheDay:
+      os.system('cls')
+      print("    " + Back.GREEN + " W " + Back.YELLOW + "O " + Back.GREEN + "R " + Back.YELLOW + "D " + Back.GREEN + "L " + Back.YELLOW + "E " + Back.BLACK + "6\n")
+      for s in userInputList:
+        print(s)    
+      print(Back.GREEN + str(userGuess))
 
-if userGuess != wordOfTheDay:
-  print("\n")
-  print(Fore.GREEN + "Nice Try\nThe word of the day is: "+str(wordOfTheDay))
-  
+      break
+    else:
+      #Runing all the fuctions and displaying the check version of the user's guess
+      findLetter(userGuess, wordOfTheDay)
+      os.system('cls')
+      print("    " + Back.GREEN + " W " + Back.YELLOW + "O " + Back.GREEN + "R " + Back.YELLOW + "D " + Back.GREEN + "L " + Back.YELLOW + "E " + Back.BLACK + "6\n")
+      for s in userInputList:
+        print(s)
+
+    if   userGuess != wordOfTheDay:
+      print("\n")
+      print(Fore.GREEN + "Nice Try\nThe word of the day is: "+str(wordOfTheDay))
