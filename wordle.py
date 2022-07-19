@@ -83,3 +83,10 @@ for i in range(6):
     if   userGuess != wordOfTheDay:
       print("\n")
       print(Fore.GREEN + "Nice Try\nThe word of the day is: "+str(wordOfTheDay))
+    if len(userGuess) !=6:
+      print(Fore.RED + "You need to enter a 6 letter word.")
+      userGuess = input("\n")
+    userGuess = input("\n")
+  else:
+    print(Fore.RED + "Invalid Word!")
+  
