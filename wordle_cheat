@@ -1,0 +1,23 @@
+f = open("valid_words.txt")
+validWords = f.readlines()
+validWords = [x.strip() for x in validWords]
+f.close()
+listOfLetters=[]
+listpossitionOfLetter=[]
+lettersAndPossitions={}
+temp=[]
+print("\r")
+for i in range(6):
+    letter=input("Enter letter number "+str(i+1)+": ")
+    listOfLetters.append(letter)
+    possitionOfLetter=int(input("Enter a number discribing the position of letter "+str(i+1)+" if you don't know it just enter x: "))
+    if possitionOfLetter!= int:
+        temp.append(possitionOfLetter)
+
+    listpossitionOfLetter.append(possitionOfLetter)
+    lettersAndPossitions= listpossitionOfLetter[listOfLetters]
+
+
+print(listpossitionOfLetter)
+print(listOfLetters)
+print(lettersAndPossitions)
