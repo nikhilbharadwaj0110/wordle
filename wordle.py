@@ -39,7 +39,7 @@ def findLetter(userInput, wordOfTheDay):
   userInputList.append(updatedString)
 
 
-## MAIN 
+### MAIN ###
 
 tries=0
 
